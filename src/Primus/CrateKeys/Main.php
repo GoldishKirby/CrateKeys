@@ -41,7 +41,7 @@ class Main extends PluginBase
 
        $this->prefix = $this->getConfig()->get('prefix');
 
-       $this->getConfig()->save();
+       $this->getPlugin()->saveConfig();
        $this->getServer()->getPluginManager()->registerEvents(new EventListener($this), $this);
        $this->getLogger()->info("Enabled.");
    }
@@ -113,7 +113,7 @@ class Main extends PluginBase
         $msg = $this->lang->get($needle);
         if($msg){
             if($player instanceof Player){
-                $msg = str_replace("{PLAYER}", $player->getName(), $msg);
+                $msg = str_replace("{PLAYER}", $player->getPlayer()->getDisplayName(), $msg);
             }
             $msg = str_replace("{PATTERNBLOCK}", strtolower(Block::get($this->getConfig()->get('pattern-block-id'))->getName()), $msg);
             $msg = $this->prefix.' '.$msg;
