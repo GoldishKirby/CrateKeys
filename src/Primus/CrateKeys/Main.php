@@ -41,7 +41,7 @@ class Main extends PluginBase
 
        $this->prefix = $this->getConfig()->get('prefix');
 
-       $this->getPlugin()->saveConfig();
+       $this->getConfig()->save();
        $this->getServer()->getPluginManager()->registerEvents(new EventListener($this), $this);
        $this->getLogger()->info("Enabled.");
    }
